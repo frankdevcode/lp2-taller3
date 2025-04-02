@@ -1,3 +1,3 @@
-<!DOCTYPE>
-<html>
-</html>
+{{ for nombre in nombres }}
+<img src="{{url_for('static', filename=nombre) }}"><br>
+{{ endfor }}
