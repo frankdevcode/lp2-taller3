@@ -1,27 +1,37 @@
-# Lenguaje de Programación 2 - Taller 3
+# Visualización de Datos Meteorológicos - Taller 3
 
-![commits](https://badgen.net/github/commits/UR-CC/lp2-taller3?icon=github) 
-![last_commit](https://img.shields.io/github/last-commit/UR-CC/lp2-taller3)
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![Flask](https://img.shields.io/badge/flask-2.3.3-green)
+![Plotly](https://img.shields.io/badge/plotly-6.0.1-orange)
 
-- ver [badgen](https://badgen.net/) o [shields](https://shields.io/) para otros tipos de _badges_
+## Autor
 
-## Autores
-
-- [@estudiante](https://www.github.com/estudiante)
+- Francisco Perlaza
 
 ## Descripción del Proyecto
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut quam dolor. Quisque elementum est sed massa gravida convallis. Donec volutpat turpis eget lectus feugiat congue. Morbi rutrum auctor eleifend. Etiam iaculis libero tellus, vel aliquet erat tempor sed. Duis efficitur quam vel sapien luctus, sed semper lacus mollis. Suspendisse non nunc eleifend, aliquet elit eget, condimentum augue.
+Este proyecto consiste en una aplicación web desarrollada con Flask que permite visualizar datos meteorológicos obtenidos de estaciones meteorológicas públicas a través de la API de ThingSpeak. La aplicación muestra gráficas interactivas de temperatura, humedad y presión atmosférica utilizando la biblioteca Plotly.
 
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus vel nibh fringilla, porta elit vel, consequat libero. Nulla et libero ac nulla ultricies sollicitudin. Sed viverra non nulla id convallis. Morbi vel varius lacus, in maximus nunc. Praesent sed semper diam. Pellentesque vehicula nulla augue, ut porta dolor consequat at.
+La aplicación permite:
+- Visualizar datos históricos de diferentes estaciones meteorológicas
+- Actualizar los datos en tiempo real
+- Interactuar con las gráficas (zoom, pan, hover)
+- Ver los datos de manera clara y organizada
+
+## Tecnologías Utilizadas
+
+- **Python 3.12**: Lenguaje de programación principal
+- **Flask**: Framework web para el backend
+- **Pandas**: Manipulación y análisis de datos
+- **Plotly**: Generación de gráficas interactivas
+- **Requests**: Comunicación con APIs externas
+- **HTML/CSS**: Interfaz de usuario
 
 ## Instalación
 
-Morbi quam lectus, tempus sit amet mi non, facilisis dignissim erat. Aenean tortor libero, rhoncus eu eleifend ut, volutpat id nisi. Ut porta eros at ante rutrum pharetra. Integer nec nulla dictum, vestibulum ligula id, hendrerit ex. Morbi eget tortor metus.
-
-1. Clonar el proyecto
+1. Clonar el repositorio
 ```bash
-git clone https://github.com/UR-CC/lp2-taller3.git
+git clone https://github.com/frankdevcode/lp2-taller3.git
 ```
 
 2. Crear y activar entorno virtual
@@ -38,11 +48,45 @@ pip install -r requirements.txt
     
 ## Ejecución
 
-Maecenas sed lorem at arcu varius mollis. Sed eleifend nulla ut blandit interdum. Donec sollicitudin nunc at orci facilisis dignissim. Donec at arcu luctus, commodo magna eget, blandit leo.
-
-1. Ejecutar el proyecto
+1. Ejecutar la aplicación
 ```bash
-cd lp2-taller3
-python app.py
+python main.py
 ```
 
+2. Abrir el navegador y acceder a la aplicación
+```
+http://127.0.0.1:5000
+```
+
+## Estructura del Proyecto
+
+- **main.py**: Archivo principal que contiene la lógica de la aplicación
+- **templates/**: Directorio con las plantillas HTML
+  - **index.html**: Página principal que muestra las gráficas
+- **static/**: Directorio donde se almacenan las gráficas generadas
+- **requirements.txt**: Archivo con las dependencias del proyecto
+
+## Funcionamiento
+
+La aplicación se conecta a la API de ThingSpeak para obtener datos meteorológicos de estaciones públicas. Estos datos son procesados utilizando Pandas y visualizados con Plotly. Las gráficas generadas son interactivas y permiten al usuario explorar los datos de manera detallada.
+
+El flujo de la aplicación es el siguiente:
+1. Se descargan los datos de las estaciones meteorológicas
+2. Se procesan y limpian los datos
+3. Se generan las gráficas interactivas
+4. Se muestran las gráficas en la interfaz web
+
+## Mejoras Futuras
+
+- Añadir más estaciones meteorológicas
+- Implementar filtros por fecha
+- Añadir más tipos de gráficas (barras, dispersión, etc.)
+- Mejorar el diseño de la interfaz de usuario
+- Implementar un sistema de alertas para condiciones meteorológicas extremas
+
+## Referencias
+
+- [ThingSpeak API Documentation](https://www.mathworks.com/help/thingspeak/)
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [Plotly Python Documentation](https://plotly.com/python/)
+- [Pandas Documentation](https://pandas.pydata.org/docs/)
