@@ -13,7 +13,7 @@
             padding: 20px;
             background-color: #f5f5f5;
         }
-        h1 {
+        h1, h2 {
             color: #333;
             text-align: center;
         }
@@ -57,9 +57,16 @@
             cursor: pointer;
             margin-top: 20px;
             border: none;
+            margin-right: 10px;
         }
         .btn:hover {
             background-color: #45a049;
+        }
+        .btn-secondary {
+            background-color: #2196F3;
+        }
+        .btn-secondary:hover {
+            background-color: #0b7dda;
         }
         .btn a {
             color: white;
@@ -71,11 +78,76 @@
             font-style: italic;
             color: #666;
         }
+        .prediccion-resumen {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 5px solid #4CAF50;
+        }
+        .tendencia {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        .ascendente {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .descendente {
+            background-color: #f44336;
+            color: white;
+        }
+        .estable {
+            background-color: #2196F3;
+            color: white;
+        }
+        .desconocida {
+            background-color: #9E9E9E;
+            color: white;
+        }
+        .alerta {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: white;
+        }
+        .alerta.advertencia {
+            background-color: #f44336;
+        }
+        .alerta.precaucion {
+            background-color: #FF9800;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Datos de Estaciones Meteorológicas</h1>
+        
+        <div class="prediccion-resumen">
+            <h2>Sistema de Predicción Meteorológica</h2>
+            <p>Este sistema analiza los datos históricos para predecir tendencias y generar alertas sobre condiciones meteorológicas extremas.</p>
+            <p>Las gráficas incluyen:</p>
+            <ul>
+                <li><strong>Datos históricos</strong> de las estaciones meteorológicas</li>
+                <li><strong>Predicciones a 24 horas</strong> basadas en análisis de tendencias (puntos rojos)</li>
+                <li><strong>Alertas</strong> para condiciones extremas o cambios rápidos</li>
+            </ul>
+            <p>Para ver un análisis detallado de las predicciones, haga clic en el botón "Ver Predicciones Detalladas".</p>
+        </div>
+        
+        <div class="nav">
+            <button class="btn"><a href="{{ url_for('actualizar_datos') }}">Actualizar Datos</a></button>
+            <button class="btn btn-secondary"><a href="{{ url_for('ver_predicciones') }}">Ver Predicciones Detalladas</a></button>
+        </div>
         
         <div class="graph-container">
             {% if graficas %}
@@ -94,10 +166,6 @@
                     <p>No hay gráficas disponibles. Haga clic en Actualizar para generar las gráficas.</p>
                 </div>
             {% endif %}
-        </div>
-        
-        <div style="text-align: center;">
-            <button class="btn"><a href="{{ url_for('actualizar_datos') }}">Actualizar Datos</a></button>
         </div>
     </div>
 </body>

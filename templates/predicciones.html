@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicciones Meteorológicas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .estacion {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .prediccion {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            border-left: 5px solid #4CAF50;
+        }
+        .prediccion h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        .detalles {
+            margin-top: 10px;
+        }
+        .detalle {
+            margin: 5px 0;
+            padding: 5px 0;
+        }
+        .tendencia {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        .ascendente {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .descendente {
+            background-color: #f44336;
+            color: white;
+        }
+        .estable {
+            background-color: #2196F3;
+            color: white;
+        }
+        .desconocida {
+            background-color: #9E9E9E;
+            color: white;
+        }
+        .alerta {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: white;
+        }
+        .alerta.advertencia {
+            background-color: #f44336;
+        }
+        .alerta.precaucion {
+            background-color: #FF9800;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            border: none;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .btn a {
+            color: white;
+            text-decoration: none;
+        }
+        .nav {
+            margin-bottom: 20px;
+        }
+        .nav a {
+            margin-right: 15px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="{{ url_for('index') }}">← Volver a Gráficas</a>
+            <a href="{{ url_for('actualizar_datos') }}">Actualizar Datos</a>
+        </div>
+        
+        <h1>Predicciones Meteorológicas</h1>
+        
+        {% if predicciones %}
+            {% for estacion, preds in predicciones.items() %}
+                <div class="estacion">
+                    <h2>Estación #{{ estacion }}</h2>
+                    
+                    {% for pred in preds %}
+                        <div class="prediccion">
+                            <h3>{{ pred.variable|capitalize }}</h3>
+                            
+                            <div class="detalles">
+                                <div class="detalle">
+                                    <strong>Tendencia:</strong> 
+                                    <span class="tendencia {{ pred.analisis.tendencia }}">
+                                        {{ pred.analisis.tendencia|capitalize }}
+                                    </span>
+                                    ({{ pred.analisis.cambio_porcentaje }}% en 24h)
+                                </div>
+                                
+                                {% if pred.analisis.prediccion_24h %}
+                                <div class="detalle">
+                                    <strong>Predicción para las próximas 24 horas:</strong> 
+                                    {{ pred.analisis.prediccion_24h }}
+                                </div>
+                                {% endif %}
+                                
+                                {% if pred.analisis.alerta %}
+                                <div class="alerta {{ pred.analisis.alerta.nivel }}">
+                                    {{ pred.analisis.alerta.mensaje }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No hay predicciones disponibles. Haga clic en Actualizar Datos para generar predicciones.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
