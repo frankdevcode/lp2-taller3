@@ -1,8 +1,9 @@
-# Visualización de Datos Meteorológicos - Taller 3
+# Visualización y Predicción de Datos Meteorológicos - Taller 3
 
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Flask](https://img.shields.io/badge/flask-2.3.3-green)
 ![Plotly](https://img.shields.io/badge/plotly-6.0.1-orange)
+![NumPy](https://img.shields.io/badge/numpy-1.26.0-red)
 
 ## Autor
 
@@ -12,14 +13,15 @@
 
 Este proyecto consiste en una aplicación web desarrollada con Flask que permite visualizar datos meteorológicos obtenidos de estaciones meteorológicas públicas a través de la API de ThingSpeak. La aplicación muestra gráficas interactivas de temperatura, humedad y presión atmosférica utilizando la biblioteca Plotly.
 
-La aplicación permite:
-- Visualizar datos históricos de diferentes estaciones meteorológicas
-- Actualizar los datos en tiempo real
-- Interactuar con las gráficas (zoom, pan, hover)
-- Ver los datos de manera clara y organizada
-- **Predecir tendencias meteorológicas** basadas en análisis de datos históricos
-- **Generar alertas** para condiciones meteorológicas extremas o cambios rápidos
-- **Visualizar predicciones a 24 horas** en las gráficas
+### Características Principales
+
+- **Visualización de Datos Históricos**: Gráficas interactivas de diferentes estaciones meteorológicas
+- **Actualización en Tiempo Real**: Obtención de datos actualizados de la API de ThingSpeak
+- **Interactividad**: Funciones de zoom, pan y hover en las gráficas
+- **Sistema de Predicción Meteorológica**: Análisis de tendencias y predicciones a 24 horas
+- **Alertas Automáticas**: Detección y notificación de condiciones meteorológicas extremas
+- **Análisis Detallado**: Página dedicada con análisis completo de predicciones por estación
+- **Interfaz Intuitiva**: Diseño limpio y responsivo para una mejor experiencia de usuario
 
 ## Tecnologías Utilizadas
 
@@ -28,7 +30,7 @@ La aplicación permite:
 - **Pandas**: Manipulación y análisis de datos
 - **Plotly**: Generación de gráficas interactivas
 - **Requests**: Comunicación con APIs externas
-- **NumPy**: Análisis numérico y cálculos para predicciones
+- **NumPy**: Análisis numérico y algoritmos de predicción
 - **HTML/CSS**: Interfaz de usuario
 
 ## Instalación
